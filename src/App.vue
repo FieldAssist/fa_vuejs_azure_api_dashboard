@@ -20,7 +20,7 @@
         class="text-center"
         cols="12"
       >
-        ©{{ new Date().getFullYear() }} — <strong>Ayush P Gupta</strong>
+        ©{{ new Date().getFullYear() }} — <strong>Ayush P Gupta, Bharat Narayani</strong>
       </v-col>
     </v-footer>
   </v-app>
