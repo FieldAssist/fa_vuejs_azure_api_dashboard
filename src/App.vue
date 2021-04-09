@@ -4,18 +4,10 @@
       app
       color="primary"
       dark
-      elevation="1"
+      elevation=0
+      height="56"
     >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-      </div>
+     <v-app-bar-title>Azure API Dashboard</v-app-bar-title>
 
       <v-spacer></v-spacer>
     </v-app-bar>
@@ -23,6 +15,14 @@
     <v-main>
       <HelloWorld/>
     </v-main>
+    <v-footer padless >
+      <v-col
+        class="text-center"
+        cols="12"
+      >
+        ©{{ new Date().getFullYear() }} — <strong>Ayush P Gupta</strong>
+      </v-col>
+    </v-footer>
   </v-app>
 </template>
 
