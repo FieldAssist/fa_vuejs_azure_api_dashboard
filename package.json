@@ -17,7 +17,7 @@
     "@kangc/v-md-editor": "^1.6.1",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
-    "test-azure-devops-api": "github:FieldAssist/fa_nodejs_azure_devops_api",
+    "fa_nodejs_azure_devops_api": "github:FieldAssist/fa_nodejs_azure_devops_api",
     "vue": "^2.6.11",
     "vuetify": "^2.4.0"
   },

@@ -11,7 +11,10 @@ This project currently helps to generate sprint notes via backlogs belonging to 
 
 ### `Azure PAT`
 
-Your Azure Personal Access Token
+Your Azure Personal Access Token.  
+Generate from here: https://dev.azure.com/flick2know/_usersSettings/tokens
+
+Copy it safely to reuse in future.
 
 ### `Iteration Path(s)`
 

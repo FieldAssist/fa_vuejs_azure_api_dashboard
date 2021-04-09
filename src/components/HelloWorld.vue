@@ -9,8 +9,10 @@
           <div class="text-overline text-start mt-4">Azure PAT</div>
           <v-text-field
             v-model="token"
-            hide-details
+            type="password"
+            hint="Generate token here: https://dev.azure.com/flick2know/_usersSettings/tokens"
             outlined
+            persistent-hint
             placeholder="Enter token here"
           ></v-text-field>
           <div class="text-overline text-start mt-4">Iteration Path(s)</div>
@@ -24,6 +26,7 @@
           <v-btn color="primary" v-on:click="addIterationPath">+ ADD</v-btn>
         </div>
         <div class="mt-8">
+          <div v-if="error" class="red--text my-4">{{error}}</div>
           <v-btn v-if="!loading" color="green" dark v-on:click="generate">GENERATE SPRINT NOTES
           </v-btn>
           <v-progress-circular v-else color="primary" indeterminate width="2"/>
@@ -47,7 +50,7 @@
 <script lang="ts">
 import Vue from 'vue'
 // eslint-disable-next-line no-unused-vars
-import { runApp } from "test-azure-devops-api/dist/event";
+import { runApp } from "fa_nodejs_azure_devops_api/dist/event";
 
 
 export default Vue.extend({
@@ -56,6 +59,7 @@ export default Vue.extend({
   data: () => ({
     loading: false,
     showParsed: false,
+    error: '',
     token: '',
     content: '',
     org: 'flick2know',
@@ -69,22 +73,29 @@ export default Vue.extend({
       this.iterationPaths.push({ id: Date.now(), path: "Sample/Path" })
     },
     async generate() {
-
-      if (!this.token || !this.org || this.iterationPaths.length == 0) {
-        console.error("token,org,iteration cannot be null/empty!");
-        return;
+      try {
+        this.error="";
+        if (!this.token || !this.org || this.iterationPaths.length == 0) {
+          console.error("token,org,iteration cannot be null/empty!");
+          return;
+        }
+        this.loading = true;
+        const orgUrl = `https://dev.azure.com/${ this.org }`
+        const paths = this.iterationPaths.map(value => value.path);
+        console.log(orgUrl);
+        console.log(paths);
+        this.content = await runApp(orgUrl, this.token, paths);
+        console.log(this.content);
+      } catch (e) {
+        console.error(e);
+        this.error = e?.toString();
+      } finally {
+        this.loading = false;
       }
-      this.loading = true;
-      const orgUrl = `https://dev.azure.com/${ this.org }`
-      const paths = this.iterationPaths.map(value => value.path);
-      console.log(orgUrl);
-      console.log(paths);
-      this.content = await runApp(orgUrl, this.token, paths);
-      console.log(this.content);
-      this.loading = false;
     },
     handleCopyCodeSuccess(code: any) {
       console.log(code);
+
     }
   }
 })
