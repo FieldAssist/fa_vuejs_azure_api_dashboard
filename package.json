@@ -1,5 +1,11 @@
 {
   "name": "fa_vuejs_azure_api_dashboard",
+  "description": "Official FA Azure API dashboard",
+  "author": {
+    "name": "Ayush P Gupta",
+    "email": "ayushpguptaapg@gmail.com",
+    "url": "https://github.com/apgapg"
+  },
   "version": "0.1.0",
   "private": true,
   "scripts": {
