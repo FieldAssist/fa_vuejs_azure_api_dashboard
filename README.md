@@ -3,6 +3,10 @@
 Official FA Azure API dashboard.
 This project currently helps to generate sprint notes via backlogs belonging to a sprint
 
+<img width="1552" alt="Screenshot 2021-04-09 at 12 22 20 PM" src="https://user-images.githubusercontent.com/13887407/114140870-7414d600-992e-11eb-88ef-bb58ab786b5f.png">
+
+<img width="1552" alt="Screenshot 2021-04-09 at 12 19 57 PM" src="https://user-images.githubusercontent.com/13887407/114140873-76773000-992e-11eb-919f-6cd1f202dfc6.png">
+
 ## ❔ Getting Started
 
 ### `Azure PAT`
