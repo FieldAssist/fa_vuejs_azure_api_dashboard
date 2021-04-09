@@ -1,4 +1,4 @@
-# fa_vuejs_azure_api_dashboard
+# fa_vuejs_azure_api_dashboard ![GitHub](https://img.shields.io/github/license/apgapg/github-asana-action) ![GitHub Repo stars](https://img.shields.io/github/stars/FieldAssist/fa_vuejs_azure_api_dashboard?style=social)
 
 Official FA Azure API dashboard.
 This project currently helps to generate sprint notes via backlogs belonging to a sprint
