@@ -83,7 +83,7 @@ export default Vue.extend({
       console.log(this.content);
       this.loading = false;
     },
-    handleCopyCodeSuccess(code) {
+    handleCopyCodeSuccess(code: any) {
       console.log(code);
     }
   }
