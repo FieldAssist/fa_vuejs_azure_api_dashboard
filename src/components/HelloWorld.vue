@@ -8,15 +8,15 @@
         <div v-if="!loading">
           <div class="text-overline text-start mt-4">Azure PAT</div>
           <v-text-field
-            v-model="token"
-            type="password"
+            v-model="azToken"
             hint="Generate token here: https://dev.azure.com/flick2know/_usersSettings/tokens"
             outlined
             persistent-hint
             placeholder="Enter token here"
+            type="password"
           ></v-text-field>
           <div class="text-overline text-start mt-4">Iteration Path(s)</div>
-          <v-text-field v-for="(iteration) in iterationPaths" :key="iteration"
+          <v-text-field v-for="(iteration) in iterationPaths" :key="iteration.id"
                         v-model="iteration.path"
                         class="mb-4"
                         hide-details
@@ -26,7 +26,7 @@
           <v-btn color="primary" v-on:click="addIterationPath">+ ADD</v-btn>
         </div>
         <div class="mt-8">
-          <div v-if="error" class="red--text my-4">{{error}}</div>
+          <div v-if="error" class="red--text my-4">{{ error }}</div>
           <v-btn v-if="!loading" color="green" dark v-on:click="generate">GENERATE SPRINT NOTES
           </v-btn>
           <v-progress-circular v-else color="primary" indeterminate width="2"/>
@@ -49,9 +49,8 @@
 
 <script lang="ts">
 import Vue from 'vue'
-// eslint-disable-next-line no-unused-vars
-import { runApp } from "fa_nodejs_azure_devops_api/dist/event";
 
+const axios = require('axios');
 
 export default Vue.extend({
   name: 'HelloWorld',
@@ -60,7 +59,7 @@ export default Vue.extend({
     loading: false,
     showParsed: false,
     error: '',
-    token: '',
+    azToken: '',
     content: '',
     org: 'flick2know',
     iterationPaths: [{
@@ -74,18 +73,20 @@ export default Vue.extend({
     },
     async generate() {
       try {
-        this.error="";
-        if (!this.token || !this.org || this.iterationPaths.length == 0) {
-          console.error("token,org,iteration cannot be null/empty!");
-          return;
+        this.error = "";
+        if (!this.azToken || !this.org || this.iterationPaths.length == 0) {
+          throw "token,org,iteration cannot be null/empty!";
         }
         this.loading = true;
-        const orgUrl = `https://dev.azure.com/${ this.org }`
         const paths = this.iterationPaths.map(value => value.path);
-        console.log(orgUrl);
-        console.log(paths);
-        this.content = await runApp(orgUrl, this.token, paths);
-        console.log(this.content);
+        const config = {
+          method: 'get',
+          url: `https://fa-azure-api.azurewebsites.net/generate?token=${ this.azToken }&org=${ this.org }&iterationPaths=${ JSON.stringify(paths) }`,
+          headers: {}
+        };
+
+        const response = await axios(config);
+        this.content = response.data;
       } catch (e) {
         console.error(e);
         this.error = e?.toString();
