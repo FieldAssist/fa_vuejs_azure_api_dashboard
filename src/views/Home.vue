@@ -10,7 +10,7 @@
 
       </v-col>
 
-      <v-col class="text-start" cols="4">
+      <v-col class="text-start" cols="12" sm="4">
         <v-card>
           <v-container class="pt-4">
             <v-img contain height="120px" src="../assets/docs.png"></v-img>
@@ -22,7 +22,7 @@
           </v-card-actions>
         </v-card>
       </v-col>
-      <v-col class="text-start" cols="4">
+      <v-col class="text-start" cols="12" sm="4">
         <v-card>
           <v-container class="pt-4">
             <v-img contain height="120px" src="../assets/crowns.png"></v-img>
