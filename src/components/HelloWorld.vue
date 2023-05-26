@@ -93,7 +93,7 @@ export default Vue.extend({
         this.content = response.data;
       } catch (e) {
         console.error(e);
-        this.error = `${e.toString()}\n${e.response.data}`;
+        this.error = `${e.toString()}\n${e.response?.data}`;
       } finally {
         this.loading = false;
       }
