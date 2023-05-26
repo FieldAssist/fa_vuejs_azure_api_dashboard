@@ -23,7 +23,7 @@
         class="text-center"
         cols="12"
       >
-        ©{{ new Date().getFullYear() }} — Made with ❤️ by <strong>Ayush P Gupta, Bharat Narayani</strong>
+        ©{{ new Date().getFullYear() }} — Made with ❤️ by <strong>Ayush P Gupta</strong>
       </v-col>
     </v-footer>
   </v-app>
