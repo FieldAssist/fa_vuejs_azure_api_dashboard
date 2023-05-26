@@ -98,7 +98,7 @@ export default Vue.extend({
         this.loading = true;
         const config = {
           method: 'get',
-          url: `https://fa-azure-api.azurewebsites.net/generator/epic?ghToken=${ this.ghToken }&epicId=${ this.epicId }&azToken=${ this.azToken }`,
+          url: `https://fa-azure-devops-api.azurewebsites.net/generator/epic?ghToken=${ this.ghToken }&epicId=${ this.epicId }&azToken=${ this.azToken }`,
           headers: {}
         };
 

@@ -83,7 +83,7 @@ export default Vue.extend({
         const paths = this.iterationPaths.map((value) => value.path);
         const config = {
           method: "get",
-          url: `https://fa-azure-api.azurewebsites.net/generate?token=${
+          url: `https://fa-azure-devops-api.azurewebsites.net/generate?token=${
             this.azToken
           }&org=${this.org}&iterationPaths=${JSON.stringify(paths)}`,
           headers: {},
